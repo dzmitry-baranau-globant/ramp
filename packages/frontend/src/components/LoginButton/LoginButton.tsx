@@ -5,9 +5,10 @@ import {
 import { Person } from '@material-ui/icons';
 import { Routes } from '@ramp/utils/types/routes';
 import { IUserLogin } from '@ramp/utils/types/userLogin';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './LoginButton.module.scss';
 import { setJWT } from '../../store/reducers/sessionSlice';
+import { RootState } from '../../store';
 
 export interface ILoginButtonProps {}
 
@@ -17,10 +18,12 @@ export interface ILoginButtonProps {}
 function LoginButton(props: ILoginButtonProps) {
   const [formValue, setFormValue] = useState<IUserLogin>({ username: '', password: '' });
   const dispatch = useDispatch();
+  const jwtToken = useSelector((state: RootState) => state.session.jwt);
   const handleFormChange = (e) => {
     const { id, value } = e.target;
     setFormValue({ ...formValue, [id]: value });
   };
+  const [isOpen, setIsOpen] = useState(false);
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const res = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}${Routes.LOGIN}`, {
@@ -32,17 +35,25 @@ function LoginButton(props: ILoginButtonProps) {
     }).catch(console.error);
     if (res) {
       const jwt = await res.json();
-      dispatch(setJWT(jwt));
+      if (jwt) {
+        dispatch(setJWT(jwt));
+        setIsOpen(false);
+      }
     }
   };
-  const [isOpen, setIsOpen] = useState(false);
   const handleModalChange = () => {
+    if (jwtToken) {
+      return dispatch(setJWT(null));
+    }
     setIsOpen(!isOpen);
   };
   return (
     <>
       <Button className={styles.root} onClick={handleModalChange}>
-        <Typography marginRight="4px">Login</Typography>
+        <Typography marginRight="4px">
+          {' '}
+          {jwtToken ? 'Logout' : 'Login'}
+        </Typography>
         <Person />
       </Button>
       <Modal open={isOpen} onClose={handleModalChange}>
