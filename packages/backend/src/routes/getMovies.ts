@@ -2,6 +2,7 @@ import { elasticSearchClient, INDEXES } from '../elasticsearch';
 import { normalizeElasticQueryData } from '../elasticsearch/utils';
 import { Express } from 'express';
 import {recommendationsSections} from "@ramp/utils/mocks/movies";
+import {IRecommendationsSection} from "@ramp/utils/types/recommendationsSection";
 
 export default (app: Express) => {
   app.get('/movies', async (req, res) => {
@@ -23,8 +24,7 @@ export default (app: Express) => {
         };
       }),
     );
-    const response = data.map(({ sectionSettings, body }) =>
-      // @ts-ignore
+    const response: IRecommendationsSection[] = data.map(({ sectionSettings, body }) =>
       normalizeElasticQueryData(body, sectionSettings),
     );
     res.json(response);

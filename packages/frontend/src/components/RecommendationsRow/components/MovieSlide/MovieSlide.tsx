@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import React from 'react';
 import styles from './MovieSlide.module.scss';
-import generateMovie from "@ramp/utils/utils/generateMovie";
+import {IMovie} from "@ramp/utils/types/index";
 
-export interface IMovieSlideProps extends ReturnType<typeof generateMovie> {
+export interface IMovieSlideProps extends IMovie {
   index: number;
   slideHeight: number
 }

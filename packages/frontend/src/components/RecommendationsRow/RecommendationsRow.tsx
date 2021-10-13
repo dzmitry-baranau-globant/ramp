@@ -10,9 +10,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useKeenSlider } from 'keen-slider/react';
 import useKeenSliderProps from '@components/RecommendationsRow/hooks/useKeenSliderProps';
 
-import { generateMovie } from '@components/App/hooks/useRecommendationsData';
 import styles from './RecommendationsRow.module.scss';
 import 'keen-slider/keen-slider.min.css';
+import {IMovie} from "@ramp/utils/types/index";
 
 export interface IRecommendationsRowProps {
   title: {
@@ -20,9 +20,8 @@ export interface IRecommendationsRowProps {
     text: string;
   };
   slideWidth: number;
-  rtl?: boolean;
   slideHeight: number;
-  items: ReturnType<typeof generateMovie>[];
+  items: IMovie[];
 }
 
 const StyledArowButton = styled.button`
@@ -56,7 +55,7 @@ const StyledArowButton = styled.button`
  */
 function RecommendationsRow(props: IRecommendationsRowProps) {
   const {
-    items, title, slideWidth, slideHeight, rtl = false,
+    items, title, slideWidth, slideHeight,
   } = props;
   const { slidesPerView, loop } = useKeenSliderProps({ slideWidth, slidesAmount: items.length });
   const [relativeSlide, setRelativeSlide] = useState(0);
@@ -70,7 +69,6 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
     loop,
     mode: 'snap',
     duration: 600,
-    rtl,
     slideChanged: (slider) => handleChangeRelativeSlide(slider.details().relativeSlide),
   });
 
