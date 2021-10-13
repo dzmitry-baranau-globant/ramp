@@ -1,14 +1,22 @@
 {
   "name": "ramp",
+  "workspaces": [
+    "packages/*"
+  ],
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ui:dev": "lerna run --scope @ramp/ui start --stream",
+    "be:start": "lerna run --scope @ramp/backend start --stream"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@types/core-js": "^2.5.5",
+    "@types/node": "^16.10.5",
+    "lerna": "^4.0.0",
+    "yarn": "^1.22.15"
   }
 }
