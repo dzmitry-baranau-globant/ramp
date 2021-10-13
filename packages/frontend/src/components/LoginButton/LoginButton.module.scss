@@ -1,0 +1,80 @@
+.root {
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  text-transform: none;
+  border: 1px solid rgba(184, 184, 184, 0.22);
+  border-radius: 8px;
+  padding: 8px 16px;
+  svg {
+    margin-bottom: 4px;
+  }
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 42px 64px 24px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(rgba(255, 255, 255, 0.38), rgba(10, 10, 42, 0.89));
+  backdrop-filter: blur(15px);
+  border: 1px solid #393939;
+  width: 400px;
+  height: 400px;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgb(21, 21, 21);
+
+  h4 {
+    color: #eeeeee;
+  }
+
+  button {
+    color: white;
+    border-color: white;
+    margin-top: 48px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.input {
+  color: white;
+  input {
+    color: white;
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 20px #918ce0 inset;
+    }
+    &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 20px #7f7ac4 inset;
+    }
+  }
+  label {
+    color: white !important;
+    &:focus {
+      color: white !important;
+    }
+  }
+  [class*='MuiInput-root'] {
+    border-bottom-color: white;
+    &:hover:not(.Mui-disabled):before {
+      border-bottom-color: #e3e3e3 !important;
+    }
+    &::before {
+      border-bottom-color: white;
+    }
+    &::after {
+      border-bottom-color: white;
+    }
+  }
+}

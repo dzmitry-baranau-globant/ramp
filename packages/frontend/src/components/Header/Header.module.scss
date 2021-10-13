@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  height: 100px;
+  align-self: start;
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1800px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+}
+
+.switchWrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo {
+  justify-self: start;
+  color: white;
+}
+
+.switch {
+  [class*='thumb'] {
+    background: linear-gradient(#c956ff, #af00ff);
+  }
+  [class*='track'] {
+    background: #3c0044;
+    opacity: 1;
+  }
+}

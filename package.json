@@ -1,5 +1,6 @@
 {
   "name": "ramp",
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
@@ -8,7 +9,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ui:dev": "lerna run --scope @ramp/ui start --stream",
+    "ui:dev": "lerna run --scope @ramp/frontend start --stream",
     "be:start": "lerna run --scope @ramp/backend start --stream"
   },
   "author": "",
