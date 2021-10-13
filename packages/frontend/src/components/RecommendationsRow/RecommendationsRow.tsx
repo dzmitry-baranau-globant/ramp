@@ -1,27 +1,21 @@
-import React, { useState } from 'react';
-import { Typography } from '@mui/material';
+import React, {useState} from 'react';
+import {Typography} from '@mui/material';
 import styled from 'styled-components';
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
+import {KeyboardArrowLeft, KeyboardArrowRight} from '@material-ui/icons';
 import MovieSlide from '@components/RecommendationsRow/components/MovieSlide';
 
 // Import css files
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useKeenSlider } from 'keen-slider/react';
+import {useKeenSlider} from 'keen-slider/react';
 import useKeenSliderProps from '@components/RecommendationsRow/hooks/useKeenSliderProps';
 
 import styles from './RecommendationsRow.module.scss';
 import 'keen-slider/keen-slider.min.css';
-import {IMovie} from "@ramp/utils/types/index";
+import {IRecommendationsSection} from "@ramp/utils/types/recommendationsSection";
 
-export interface IRecommendationsRowProps {
-  title: {
-    color: string;
-    text: string;
-  };
-  slideWidth: number;
-  slideHeight: number;
-  items: IMovie[];
+export interface IRecommendationsRowProps extends IRecommendationsSection {
+
 }
 
 const StyledArowButton = styled.button`

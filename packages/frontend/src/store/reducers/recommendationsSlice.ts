@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fakeData } from '@components/App/hooks/useRecommendationsData';
 import {IRecommendationsSection} from "@ramp/utils/types/recommendationsSection";
 
 export const recommendationsInitialState: { recommendations: IRecommendationsSection[], extendedGrid: boolean } = { recommendations: [], extendedGrid: true };
@@ -8,10 +7,10 @@ export const recommendationsSlice = createSlice({
   name: 'root',
   initialState: recommendationsInitialState,
   reducers: {
-    setRecommendations: (state, { payload }: { payload: typeof fakeData }) => {
+    setRecommendations: (state, { payload }: { payload: IRecommendationsSection[] }) => {
       state.recommendations = payload;
     },
-    switchExtendedGrid: (state, { payload }) => {
+    switchExtendedGrid: (state) => {
       state.extendedGrid = !state.extendedGrid;
     },
   },

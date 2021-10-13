@@ -5,7 +5,7 @@ import useRecommendationsData from '@components/App/hooks/useRecommendationsData
 import Footer from '@components/Footer';
 import { useSelector } from 'react-redux';
 import styles from './App.module.scss';
-import { RootState } from '../../store/store';
+import { RootState } from '../../store';
 
 function App() {
   const recommendationsData = useRecommendationsData();

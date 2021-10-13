@@ -7,7 +7,7 @@ import { OutdoorGrill, Person, VpnKey } from '@material-ui/icons';
 import LoginButton from '@components/LoginButton';
 import styles from './Header.module.scss';
 import { setRecommendations, switchExtendedGrid } from '../../store/reducers/recommendationsSlice';
-import { RootState } from '../../store/store';
+import { RootState } from '../../store';
 
 export interface IHeaderProps {}
 

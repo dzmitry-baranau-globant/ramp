@@ -19,6 +19,6 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(cacheSync),
   preloadedState: getLocalStorageRecommendations(),
 });
-export type RootState = ReturnType<typeof store.getState>;
+
 
 export default store;

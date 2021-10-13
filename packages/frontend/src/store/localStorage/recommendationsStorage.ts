@@ -3,7 +3,6 @@ import { recommendationsInitialState } from '../reducers/recommendationsSlice';
 
 enum LocalStorageNamespace {
   STORE = 'STORE',
-  TIMESTAMP = 'TIMESTAMP',
 }
 
 export const syncRecommendationsLocalStorageWithReduxState = (store) => {
