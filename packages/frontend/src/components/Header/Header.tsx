@@ -8,6 +8,7 @@ import LoginButton from '@components/LoginButton';
 import styles from './Header.module.scss';
 import { setRecommendations, switchExtendedGrid } from '../../store/reducers/recommendationsSlice';
 import { RootState } from '../../store';
+import { setJWT } from '../../store/reducers/sessionSlice';
 
 export interface IHeaderProps {}
 
@@ -29,7 +30,10 @@ function Header(props: IHeaderProps) {
     return setMode(Env.BETA);
   };
 
-  const isExtendedGrid = useSelector((state: RootState) => state.recommendations.extendedGrid);
+  const { isExtendedGrid, jwt } = useSelector((state: RootState) => ({
+    isExtendedGrid: state.recommendations.extendedGrid,
+    jwt: state.session.jwt,
+  }));
   const dispatch = useDispatch();
   const handleExtendedGridChange = () => {
     // @ts-ignore
@@ -39,8 +43,10 @@ function Header(props: IHeaderProps) {
     <div className={styles.root}>
       <div className={styles.wrapper}>
         <div className={styles.content}>
-          <Typography className={styles.logo} variant="h4" fontWeight={800}>
+          <Typography noWrap className={styles.logo} variant="h4" fontWeight={800}>
             ramp
+            {' '}
+            {jwt}
           </Typography>
           <div>
             <div className={styles.switchWrapper}>

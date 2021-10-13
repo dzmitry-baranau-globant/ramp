@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import {
-  Box, Button, Fade, FormControl, Modal, TextField, Typography,
+  Box, Button, Modal, TextField, Typography,
 } from '@mui/material';
 import { Person } from '@material-ui/icons';
+import { Routes } from '@ramp/utils/types/routes';
+import { IUserLogin } from '@ramp/utils/types/userLogin';
+import { useDispatch } from 'react-redux';
 import styles from './LoginButton.module.scss';
+import { setJWT } from '../../store/reducers/sessionSlice';
 
 export interface ILoginButtonProps {}
 
@@ -11,13 +15,27 @@ export interface ILoginButtonProps {}
  * Login Button
  */
 function LoginButton(props: ILoginButtonProps) {
-  const [formValue, setFormValue] = useState({ username: '', password: '' });
+  const [formValue, setFormValue] = useState<IUserLogin>({ username: '', password: '' });
+  const dispatch = useDispatch();
   const handleFormChange = (e) => {
     const { id, value } = e.target;
     setFormValue({ ...formValue, [id]: value });
   };
-  const handleFormSubmit = () => {};
-  const [isOpen, setIsOpen] = useState(true);
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}${Routes.LOGIN}`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(formValue),
+    }).catch(console.error);
+    if (res) {
+      const jwt = await res.json();
+      dispatch(setJWT(jwt));
+    }
+  };
+  const [isOpen, setIsOpen] = useState(false);
   const handleModalChange = () => {
     setIsOpen(!isOpen);
   };
@@ -33,7 +51,7 @@ function LoginButton(props: ILoginButtonProps) {
             Login
           </Typography>
 
-          <form onChange={handleFormChange}>
+          <form onChange={handleFormChange} onSubmit={handleFormSubmit}>
             <TextField
               value={formValue.username}
               required
@@ -57,7 +75,9 @@ function LoginButton(props: ILoginButtonProps) {
               id="password"
               variant="standard"
             />
-            <Button variant="outlined">Sign In</Button>
+            <Button variant="outlined" type="submit">
+              Sign In
+            </Button>
           </form>
         </Box>
       </Modal>

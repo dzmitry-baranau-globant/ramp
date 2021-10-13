@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {IRecommendationsSection} from "@ramp/utils/types/recommendationsSection";
+import { IRecommendationsSection } from '@ramp/utils/types/recommendationsSection';
 
-export const recommendationsInitialState: { recommendations: IRecommendationsSection[], extendedGrid: boolean } = { recommendations: [], extendedGrid: true };
+export const recommendationsInitialState: {
+  recommendations: IRecommendationsSection[];
+  extendedGrid: boolean;
+} = { recommendations: [], extendedGrid: true };
 
 export const recommendationsSlice = createSlice({
   name: 'root',

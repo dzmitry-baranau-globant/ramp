@@ -3,6 +3,7 @@ import getLocalStorageRecommendations, {
   syncRecommendationsLocalStorageWithReduxState,
 } from './localStorage/recommendationsStorage';
 import recommendationsReducer from './reducers/recommendationsSlice';
+import sessionSlice from './reducers/sessionSlice';
 
 const cacheSync = (store: any) => (next: any) => (action: any) => {
   const res = next(action);
@@ -10,15 +11,15 @@ const cacheSync = (store: any) => (next: any) => (action: any) => {
   return res;
 };
 
-export const test = "test"
+export const test = 'test';
 
 const store = configureStore({
   reducer: {
     recommendations: recommendationsReducer,
+    session: sessionSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(cacheSync),
   preloadedState: getLocalStorageRecommendations(),
 });
-
 
 export default store;
