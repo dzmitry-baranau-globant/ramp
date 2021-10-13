@@ -16,7 +16,12 @@
     "paths": {
       "@ramp/utils/types/*": ["./packages/utils/types/*"],
       "@ramp/utils/mocks/*": ["./packages/utils/mocks/*"],
-      "@ramp/utils/utils/*": ["./packages/utils/utils/*"]
+      "@ramp/utils/utils/*": ["./packages/utils/utils/*"],
+      "@components/*": ["./packages/frontend/src/components/*"],
+      "@images/*": ["./packages/frontend/src/assets/images/*"],
+      "@icons/*": ["./packages/frontend/src/assets/icons/*"],
+      "@styles": ["./packages/frontend/src/styles/index.scss"],
+      "@context/*": ["./packages/frontend/src/context/*"]
     }
   },
   "exclude": [

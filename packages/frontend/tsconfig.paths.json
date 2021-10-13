@@ -6,7 +6,10 @@
       "@images/*": ["src/assets/images/*"],
       "@icons/*": ["src/assets/icons/*"],
       "@styles": ["src/styles/index.scss"],
-      "@context/*": ["src/context/*"]
+      "@context/*": ["src/context/*"],
+      "@ramp/utils/types/*": ["../utils/types/*"],
+      "@ramp/utils/mocks/*": ["../utils/mocks/*"],
+      "@ramp/utils/utils/*": ["../utils/utils/*"]
     }
   }
 }

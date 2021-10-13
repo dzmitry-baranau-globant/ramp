@@ -3,6 +3,7 @@ import { Typography } from '@mui/material';
 import styled from 'styled-components';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 import MovieSlide from '@components/RecommendationsRow/components/MovieSlide';
+
 // Import css files
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

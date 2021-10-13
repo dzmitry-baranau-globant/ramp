@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
-import { Typography } from '@mui/material';
-import { generateMovie } from '@components/App/hooks/useRecommendationsData';
 import styles from './MovieSlide.module.scss';
+import generateMovie from "@ramp/utils/utils/generateMovie";
 
 export interface IMovieSlideProps extends ReturnType<typeof generateMovie> {
   index: number;
