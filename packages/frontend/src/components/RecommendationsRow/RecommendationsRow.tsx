@@ -1,29 +1,25 @@
-import React, {useState} from 'react';
-import {Typography} from '@mui/material';
+import React, { useState } from 'react';
+import { Typography } from '@mui/material';
 import styled from 'styled-components';
-import {KeyboardArrowLeft, KeyboardArrowRight} from '@material-ui/icons';
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons';
 import MovieSlide from '@components/RecommendationsRow/components/MovieSlide';
 
-// Import css files
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import {useKeenSlider} from 'keen-slider/react';
+import { useKeenSlider } from 'keen-slider/react';
 import useKeenSliderProps from '@components/RecommendationsRow/hooks/useKeenSliderProps';
 
+import { IRecommendationsSection } from '@ramp/utils/types/recommendationsSection';
 import styles from './RecommendationsRow.module.scss';
+// Import css files
 import 'keen-slider/keen-slider.min.css';
-import {IRecommendationsSection} from "@ramp/utils/types/recommendationsSection";
 
-export interface IRecommendationsRowProps extends IRecommendationsSection {
-
-}
+export interface IRecommendationsRowProps extends IRecommendationsSection {}
 
 const StyledArowButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: ${({ slideHeight }: {slideHeight: number}) => slideHeight / 2}px;
+  top: ${({ slideHeight }: { slideHeight: number }) => slideHeight / 2}px;
   transform: translateY(-50%);
   background: transparent;
   border: none;
