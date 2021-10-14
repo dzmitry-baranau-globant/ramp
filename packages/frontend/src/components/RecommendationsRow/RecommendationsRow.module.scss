@@ -6,14 +6,14 @@
   @media (max-width: 400px) {
     width: 100%;
   }
+  @media (max-width: 520px) {
+    padding: 0 8px;
+  }
 }
 .sliderWrapper {
   border: 1px solid #404040;
   border-radius: 16px;
   position: relative;
-  @media (max-width: 520px) {
-    padding: 0 16px;
-  }
 }
 .title {
   width: 100%;
