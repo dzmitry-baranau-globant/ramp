@@ -1,9 +1,9 @@
 import express = require('express');
-import getMoviesRoute from './routes/getMovies';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import setupElasticSearchData from './elasticsearch';
-import postUserLogin from "./routes/postUserLogin";
+import POST_userLogin from './routes/post.userLogin';
+import GET_movies from './routes/get.movies';
 
 setupElasticSearchData().catch((err) => {
   console.error('ERROR SETTING UP ELASTIC', err);
@@ -18,8 +18,8 @@ app.use(
   bodyParser.json(),
 );
 
-getMoviesRoute(app);
-postUserLogin(app)
+GET_movies(app);
+POST_userLogin(app);
 
 app.listen(4200, () => {
   console.log('listening to port: 4200');

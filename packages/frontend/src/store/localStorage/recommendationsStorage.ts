@@ -2,7 +2,7 @@ import store2 from 'store2';
 import { recommendationsInitialState } from '../reducers/recommendationsSlice';
 import { sessionInitialState } from '../reducers/sessionSlice';
 
-enum LocalStorageNamespace {
+export enum LocalStorageNamespace {
   STORE = 'STORE',
 }
 

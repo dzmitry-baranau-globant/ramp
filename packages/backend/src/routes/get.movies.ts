@@ -4,9 +4,11 @@ import { Express } from 'express';
 import { recommendationsSections } from '@ramp/utils/mocks/movies';
 import { IRecommendationsSection } from '@ramp/utils/types/recommendationsSection';
 import { Routes } from '@ramp/utils/types/routes';
+import jwt from 'express-jwt';
+import { TOKEN_SECRET } from './post.userLogin';
 
-export default (app: Express) => {
-  app.get(Routes.GET_MOVIES, async (req, res) => {
+const GET_movies = (app: Express) => {
+  app.get(Routes.GET_MOVIES, jwt({ secret: TOKEN_SECRET, algorithms: ['HS256'] }), async (req, res) => {
     const data = await Promise.all(
       recommendationsSections.map(async (sectionSettings, index) => {
         const { body } = await elasticSearchClient.search({
@@ -31,3 +33,5 @@ export default (app: Express) => {
     res.json(response);
   });
 };
+
+export default GET_movies;

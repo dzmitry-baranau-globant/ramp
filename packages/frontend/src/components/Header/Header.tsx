@@ -7,7 +7,7 @@ import { OutdoorGrill, Person, VpnKey } from '@material-ui/icons';
 import LoginButton from '@components/LoginButton';
 import styles from './Header.module.scss';
 import { setRecommendations, switchExtendedGrid } from '../../store/reducers/recommendationsSlice';
-import { RootState } from '../../store';
+import { RootState } from '../../store/store';
 
 export interface IHeaderProps {}
 
@@ -46,7 +46,7 @@ function Header(props: IHeaderProps) {
             <div className={styles.switchWrapper}>
               <Switch onChange={handleOnChange} className={styles.switch} />
               <Typography color="#fff">
-                Mode:
+                Env:
                 {mode}
               </Typography>
             </div>

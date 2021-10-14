@@ -1,10 +1,11 @@
 import { Express } from 'express';
+import jwt from 'jsonwebtoken';
 import { Routes } from '@ramp/utils/types/routes';
 import { IUserLogin } from '@ramp/utils/types/userLogin';
 import { testUser } from '@ramp/utils/mocks/users';
-import jwt from 'jsonwebtoken';
 
-const postUserLogin = (app: Express) => {
+export const TOKEN_SECRET = 'secret';
+const POST_userLogin = (app: Express) => {
   app.post(Routes.LOGIN, (req, res) => {
     const loginInfo: IUserLogin = req.body;
     if (loginInfo.username === testUser.username && loginInfo.password === testUser.password) {
@@ -14,11 +15,12 @@ const postUserLogin = (app: Express) => {
           exp: Math.floor(Date.now() / 1000) + 60 * 60,
           data: loginInfo,
         },
-        'secret',
+        TOKEN_SECRET,
+        { algorithm: 'HS256' },
       );
       res.json(token);
     }
   });
 };
 
-export default postUserLogin;
+export default POST_userLogin;

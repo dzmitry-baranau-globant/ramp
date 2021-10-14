@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
+      "@store/*": ["src/store/*"],
       "@ramp/utils/types/*": ["../utils/types/*"],
       "@ramp/utils/mocks/*": ["../utils/mocks/*"],
       "@ramp/utils/utils/*": ["../utils/utils/*"]
