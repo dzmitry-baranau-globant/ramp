@@ -2,27 +2,27 @@ import generateMovie from "../utils/generateMovie";
 
 export const recommendationsSections = [
   {
-    title: { text: 'Recommendations' },
-    slideHeight: 200,
-    slideWidth: 175,
+    title: { text: 'Best for you' },
+    slideHeight: 260,
+    slideWidth: 240,
   },
   {
     // @ts-ignore
-    title: { text: 'Movies that you liked' },
-    slideWidth: 400,
-    slideHeight: 400,
+    title: { text: 'Trending movies' },
+    slideWidth: 200,
+    slideHeight: 175,
   },
   {
     // @ts-ignore
-    title: { text: 'Movies For family' },
+    title: { text: 'Popular comedies' },
     slideWidth: 300,
     slideHeight: 300,
   },
   {
     // @ts-ignore
-    title: { text: 'Extra Movies' },
-    slideWidth: 230,
-    slideHeight: 300,
+    title: { text: 'Movies like "Supernatural"' },
+    slideWidth: 250,
+    slideHeight: 200,
   },
 ];
 

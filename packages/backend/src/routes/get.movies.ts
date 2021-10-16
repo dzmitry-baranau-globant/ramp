@@ -18,7 +18,7 @@ const GET_movies = (app: Express) => {
               match_all: {},
             },
             size: 100,
-            from: index * 100,
+            from: (index + 5) * 100,
           },
         });
         return {

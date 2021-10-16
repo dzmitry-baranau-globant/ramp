@@ -5,6 +5,7 @@ import { Routes } from '@ramp/utils/types/routes';
 import { setRecommendations } from '@store/reducers/recommendationsSlice';
 import { RootState } from '@store/store';
 import { Dispatch } from '@reduxjs/toolkit';
+import { cacheCurrentDayRecommendations } from '@store/localStorage/recommendationsStorage';
 import fetchRequest, { onUnauthorizedFetchRequest } from '../../../utils/fetchRequest';
 
 export async function fetchRecommendations(dispatch: Dispatch) {
@@ -13,7 +14,10 @@ export async function fetchRecommendations(dispatch: Dispatch) {
     onUnauthorizedFetchRequest,
     dispatch,
   )) ?? [];
-  dispatch(setRecommendations(moviesSection));
+  if (moviesSection.length > 0) {
+    dispatch(setRecommendations({ sections: moviesSection }));
+    cacheCurrentDayRecommendations(moviesSection);
+  }
 }
 
 const useRecommendationsData = (): IRecommendationsSection[] => {

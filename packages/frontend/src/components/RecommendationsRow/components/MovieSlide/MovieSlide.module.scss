@@ -9,8 +9,7 @@
   position: relative;
   height: 200px;
   color: #ffffff;
-  //border-right: 1px solid red;
-  border-right: 1px solid rgb(42, 42, 42);
+  //border-right: 1px solid rgb(42, 42, 42);
 }
 
 .img {
@@ -20,7 +19,7 @@
   z-index: 0;
   object-fit: cover;
   background: #000;
-  border-right: 1px solid rgb(42, 42, 42);
+  //border-right: 1px solid rgb(42, 42, 42);
   @media (max-width: 520px) {
     height: 300px !important;
   }

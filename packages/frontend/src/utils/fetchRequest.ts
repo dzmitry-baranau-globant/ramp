@@ -1,6 +1,6 @@
 import getLocalStorageToken from '@store/localStorage/sessionStorage';
 import { useDispatch } from 'react-redux';
-import { setJWT } from '@store/reducers/sessionSlice';
+import { setJWT, setSnackbarMessage } from '@store/reducers/sessionSlice';
 import { Dispatch } from '@reduxjs/toolkit';
 
 export const onUnauthorizedFetchRequest = (dispatch: Dispatch) => dispatch(setJWT(null));
@@ -13,7 +13,12 @@ const fetchRequest = async <T = undefined[]>(
 ): Promise<T> => {
   const jwtToken = getLocalStorageToken();
   const modifiedInit: RequestInit = { ...init, headers: { Authorization: `Bearer ${jwtToken}` } };
-  const res = await fetch(input, modifiedInit).catch(console.error);
+  const res = await fetch(input, modifiedInit).catch((err) => {
+    console.error(err);
+    dispatch(
+      setSnackbarMessage({ message: 'Recommendations server not available', severity: 'error' }),
+    );
+  });
   if (res) {
     if (res.status === 401) {
       onUnauthorized(dispatch);

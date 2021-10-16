@@ -20,10 +20,16 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto 1fr auto;
+  grid-column-gap: 8px;
   align-items: center;
   width: 80%;
   height: 100%;
+}
+
+.cachedButtonWrapper {
+  //justify-self: end;
+  justify-self: end;
 }
 
 .switchWrapper {
@@ -35,6 +41,14 @@
   justify-self: start;
   color: white;
   width: 100%;
+}
+
+.settingsWrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-gap: 12px;
+  grid-template-columns: auto auto;
+  justify-items: end;
 }
 
 .switch {

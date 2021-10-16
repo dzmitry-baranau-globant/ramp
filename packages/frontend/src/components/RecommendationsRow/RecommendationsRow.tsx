@@ -47,13 +47,17 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
   const {
     items, title, slideWidth, slideHeight,
   } = props;
-  const { slidesPerView, loop } = useKeenSliderProps({ slideWidth, slidesAmount: items.length });
+  const { slidesPerView, loop, slidesWidth } = useKeenSliderProps({
+    slideWidth,
+    slidesAmount: items.length,
+  });
   const [relativeSlide, setRelativeSlide] = useState(0);
   const handleChangeRelativeSlide = (relativeSlideIndex: number) => {
     if (relativeSlide !== relativeSlideIndex) {
       setRelativeSlide(relativeSlideIndex);
     }
   };
+
   const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     slidesPerView,
     loop,
@@ -74,6 +78,11 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
     const nextSlide = relativeSlide - Number(slidesPerView);
     slider.moveToSlideRelative(nextSlide, true);
   };
+
+  if (Number.isNaN(slidesPerView)) {
+    return null;
+  }
+
   return (
     <div className={styles.root}>
       <Typography
@@ -88,13 +97,20 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
       <div className={styles.sliderWrapper}>
         <div ref={sliderRef} className={`${styles.slider} keen-slider`}>
           {items.map((movie, index) => (
-            <div className={`keen-slider__slide number-slide${index}`}>
-              <MovieSlide
-                key={movie.imageHref}
-                index={index}
-                {...movie}
-                slideHeight={slideHeight}
-              />
+            <div
+              className={`keen-slider__slide number-slide${index}`}
+              style={{ minWidth: slidesWidth || slideWidth, height: slideHeight }}
+              key={movie.imageHref + movie.title + index}
+            >
+              {Number.isNaN(slidesPerView) ? null : (
+                <MovieSlide
+                  key={movie.imageHref}
+                  index={index}
+                  {...movie}
+                  slideHeight={slideHeight}
+                  isLast={index + 1 === items.length}
+                />
+              )}
             </div>
           ))}
         </div>

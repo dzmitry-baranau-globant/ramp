@@ -9,10 +9,9 @@ const POST_userLogin = (app: Express) => {
   app.post(Routes.LOGIN, (req, res) => {
     const loginInfo: IUserLogin = req.body;
     if (loginInfo.username === testUser.username && loginInfo.password === testUser.password) {
-      console.log('GENERATE JWT');
       const token = jwt.sign(
         {
-          exp: Math.floor(Date.now() / 1000) + 60 * 60,
+          // exp: Math.floor(Date.now() / 1000) + 60 * 60,
           data: loginInfo,
         },
         TOKEN_SECRET,

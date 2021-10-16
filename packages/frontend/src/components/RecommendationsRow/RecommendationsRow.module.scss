@@ -11,7 +11,7 @@
   }
 }
 .sliderWrapper {
-  border: 1px solid #404040;
+  //border: 1px solid #404040;
   border-radius: 16px;
   position: relative;
 }
@@ -29,6 +29,7 @@
   z-index: 2;
 
   box-shadow: 0 18px 38px rgba(0,0,0,0.3);
+  background: #000000;
 }
 
 .slide {

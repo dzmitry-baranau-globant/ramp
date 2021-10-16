@@ -3,7 +3,7 @@ import {
   Box, Button, Modal, TextField, Typography,
 } from '@mui/material';
 import { Person } from '@material-ui/icons';
-import useLogin from '@components/LoginButton/hooks/useLogin';
+import useLogin from '@components/Header/components/LoginButton/hooks/useLogin';
 import styles from './LoginButton.module.scss';
 
 export interface ILoginButtonProps {}
