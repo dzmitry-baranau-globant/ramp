@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from '@components/App';
 import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material';
-import '@fontsource/work-sans/900.css';
-import '@fontsource/work-sans/800.css';
-import '@fontsource/work-sans/700.css';
-import '@fontsource/work-sans/600.css';
-import '@fontsource/work-sans/500.css';
-import '@fontsource/work-sans/400.css';
-import '@fontsource/work-sans/300.css';
-import '@fontsource/work-sans/200.css';
-import '@fontsource/work-sans/100.css';
+// import '@fontsource/work-sans/900.css';
+// import '@fontsource/work-sans/800.css';
+// import '@fontsource/work-sans/700.css';
+// import '@fontsource/work-sans/600.css';
+// import '@fontsource/work-sans/500.css';
+// import '@fontsource/work-sans/400.css';
+// import '@fontsource/work-sans/300.css';
+// import '@fontsource/work-sans/200.css';
+// import '@fontsource/work-sans/100.css';
 import { Provider } from 'react-redux';
 import store from './store';
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Work Sans',
+    fontFamily: 'Gilroy',
   },
 });
 

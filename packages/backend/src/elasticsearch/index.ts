@@ -2,7 +2,7 @@ import generateMovie from "@ramp/utils/utils/generateMovie";
 import {movieIds} from "@ramp/utils/mocks/movies";
 
 const { Client } = require('@elastic/elasticsearch');
-export const elasticSearchClient = new Client({ node: 'http://localhost:9200' });
+export const elasticSearchClient = new Client({ node: 'http://localhost:9200',  });
 
 export enum INDEXES {
   RECOMMENDATIONS = 'recommendations',
