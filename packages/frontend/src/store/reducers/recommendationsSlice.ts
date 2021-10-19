@@ -5,11 +5,14 @@ export class RecommendationsInitialState {
   recommendations: IRecommendationsSection[];
 
   extendedGrid: boolean;
+
+  selectedCachedDate?: string;
 }
 
 export const recommendationsInitialState: RecommendationsInitialState = {
   recommendations: [],
   extendedGrid: true,
+  selectedCachedDate: null,
 };
 
 export const recommendationsSlice = createSlice({
@@ -25,9 +28,16 @@ export const recommendationsSlice = createSlice({
     switchExtendedGrid: (state) => {
       state.extendedGrid = !state.extendedGrid;
     },
+    selectCachedRecommendationsDay: (
+      state,
+      { payload: { date } }: { payload: { date: string } },
+    ) => {
+      console.log({ date });
+      state.selectedCachedDate = date;
+    },
   },
 });
 
-export const { setRecommendations, switchExtendedGrid } = recommendationsSlice.actions;
+export const { setRecommendations, switchExtendedGrid, selectCachedRecommendationsDay } = recommendationsSlice.actions;
 
 export default recommendationsSlice.reducer;

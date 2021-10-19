@@ -40,8 +40,12 @@ export const cacheCurrentDayRecommendations = (recs: IRecommendationsSection[]) 
 
 export const getCachedEverydayRecommendations = (): IDailyRecs => store2(LocalStorageNamespace.DAILY_RECS) ?? {};
 
-export const syncRecommendationsLocalStorageWithReduxState = (store) => {
-  store2(LocalStorageNamespace.STORE, store);
+export const syncRecommendationsLocalStorageWithReduxState = (store: RootState) => {
+  const updatedStore: RootState = {
+    ...store,
+    recommendations: { ...store.recommendations, selectedCachedDate: null },
+  };
+  store2(LocalStorageNamespace.STORE, updatedStore);
 };
 
 const getLocalStorageRecommendations = () => {
@@ -49,10 +53,6 @@ const getLocalStorageRecommendations = () => {
   if (!localCache) {
     return { recommendations: recommendationsInitialState, session: sessionInitialState };
   }
-  console.log(localCache);
-  const test = Object.assign(new RecommendationsInitialState(), localCache.session);
-  const test2 = Object.assign(new RecommendationsInitialState(), localCache.recommendations);
-  console.log(localCache.session instanceof RecommendationsInitialState);
   return localCache;
 };
 

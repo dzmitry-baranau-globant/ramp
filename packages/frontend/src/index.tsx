@@ -18,6 +18,9 @@ import store from './store';
 const theme = createTheme({
   typography: {
     fontFamily: 'Gilroy',
+    allVariants: {
+      color: '#fff',
+    },
   },
 });
 

@@ -11,7 +11,7 @@ function Footer(props: IFooterProps) {
   const {} = props;
   return (
     <div className={styles.root}>
-      <Typography color="#fff">Footer</Typography>
+      <Typography>Footer</Typography>
     </div>
   );
 }

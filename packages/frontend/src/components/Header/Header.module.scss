@@ -39,8 +39,12 @@
 
 .logo {
   justify-self: start;
-  color: white;
+  color: #c748ae;
   width: 100%;
+  padding: 0 8px;
+  background: linear-gradient(20deg, #9a42e3 0%, #3f75ff 80%, #9a9af6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .settingsWrapper {

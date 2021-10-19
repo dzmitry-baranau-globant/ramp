@@ -40,21 +40,21 @@ function Header(props: IHeaderProps) {
     <div className={styles.root}>
       <div className={styles.wrapper}>
         <div className={styles.content}>
-          <Typography className={styles.logo} variant="h4" fontWeight={800}>
-            ramp
+          <Typography className={styles.logo} variant="h4" fontWeight={900}>
+            DAI RAMP
           </Typography>
           <div className={styles.settingsWrapper}>
             <div>
               <div className={styles.switchWrapper}>
                 <Switch onChange={handleOnChange} className={styles.switch} />
-                <Typography color="#fff">
+                <Typography>
                   {`Env: 
                   ${mode}`}
                 </Typography>
               </div>
               <div className={styles.switchWrapper}>
                 <Switch checked={isExtendedGrid} onChange={handleExtendedGridChange} />
-                <Typography color="#fff">Extended Grid</Typography>
+                <Typography>Extended Grid</Typography>
               </div>
             </div>
             <div className={styles.cachedButtonWrapper}>

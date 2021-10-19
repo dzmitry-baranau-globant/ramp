@@ -89,8 +89,7 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
         marginBottom="8px"
         className={styles.title}
         variant="h4"
-        color="#fff"
-        fontWeight={800}
+        fontWeight={700}
       >
         {title.text}
       </Typography>
