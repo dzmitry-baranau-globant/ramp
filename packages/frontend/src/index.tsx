@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from '@components/App';
 import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material';
+import { BrowserRouter as Router } from 'react-router-dom';
 // import '@fontsource/work-sans/900.css';
 // import '@fontsource/work-sans/800.css';
 // import '@fontsource/work-sans/700.css';
@@ -26,13 +27,15 @@ const theme = createTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <StyledEngineProvider injectFirst>
-          <App />
-        </StyledEngineProvider>
-      </ThemeProvider>
-    </Provider>
+    <Router>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <StyledEngineProvider injectFirst>
+            <App />
+          </StyledEngineProvider>
+        </ThemeProvider>
+      </Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 );

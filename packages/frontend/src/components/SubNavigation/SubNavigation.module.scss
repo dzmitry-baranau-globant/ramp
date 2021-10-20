@@ -1,0 +1,26 @@
+.root {
+  display: inline-flex;
+  margin-bottom: 22px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  margin-left: -16px;
+  padding: 8px 16px;
+  margin-top: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  span {
+    margin: 0 12px;
+    color: rgba(255, 255, 255, 0.49);
+    font-size: 12px;
+    cursor: default;
+  }
+  &__selected {
+    color: #99cdf1 !important;
+  }
+}
+
+.linkText {
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.1s ease-in-out;
+}

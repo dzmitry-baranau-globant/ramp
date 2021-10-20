@@ -8,6 +8,7 @@ import {
   Alert, Button, Snackbar, Typography,
 } from '@mui/material';
 import { closeSnackBarMessage, setSnackbarMessage } from '@store/reducers/sessionSlice';
+import SubNavigation from '@components/SubNavigation';
 import styles from './App.module.scss';
 import { RootState } from '../../store/store';
 
@@ -49,20 +50,7 @@ function App() {
       </Snackbar>
       <Header />
       <div className={styles.recommendationsWrapper}>
-        <div className={styles.subNavigation}>
-          {subNavigationsMenu.map((text, index) => (
-            <React.Fragment key={text}>
-              <Typography
-                className={index === 0 ? styles.subNavigation__selected : null}
-                fontWeight={300}
-                variant="body1"
-              >
-                {text}
-              </Typography>
-              {index !== subNavigationsMenu.length - 1 ? <span>|</span> : null}
-            </React.Fragment>
-          ))}
-        </div>
+        <SubNavigation />
         {recommendationsData.map((recommendationRow) => (
           <div className={styles.recommendationRowWrapper} key={recommendationRow.title.text}>
             <RecommendationsRow
