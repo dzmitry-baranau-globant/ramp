@@ -12,25 +12,18 @@
 }
 .sliderWrapper {
   //border: 1px solid #404040;
-  border-radius: 16px;
   position: relative;
 }
 .title {
   width: 100%;
-  padding: 0 8px;
   @media (max-width: 520px) {
     font-size: 26px;
     text-align: center;
   }
 }
 .slider {
-  border-radius: 16px;
-  overflow: hidden;
   width: 100%;
   z-index: 2;
-
-  box-shadow: 0 18px 38px rgba(0,0,0,0.3);
-  background: #000000;
 }
 
 .slide {

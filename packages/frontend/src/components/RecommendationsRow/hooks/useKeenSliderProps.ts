@@ -1,10 +1,17 @@
 import useWindowSize from '@components/RecommendationsRow/hooks/useWindowSize';
 
-const useKeenSliderProps = ({ maxSliderWidth = 1800, slideWidth = 150, slidesAmount = 0 }) => {
+const useKeenSliderProps = ({
+  maxSliderWidth = 1800,
+  slideWidth = 150,
+  slidesAmount = 0,
+  slideSpace,
+}) => {
   const { width } = useWindowSize();
-  const swiperWidth = width * 0.8 > maxSliderWidth ? maxSliderWidth : Math.floor(width * 0.8);
-  const slidesPerView = Math.floor(swiperWidth / slideWidth);
-  const slidesWidth = swiperWidth / slidesPerView - 2;
+  const sliderWidth = width * 0.8 > maxSliderWidth
+    ? maxSliderWidth
+    : Number((width * 0.8 - 12).toFixed(1));
+  const slidesPerView = Math.floor(sliderWidth / slideWidth);
+  const slidesWidth = (sliderWidth - (slidesPerView - 1) * slideSpace) / slidesPerView;
   // @ts-ignore
   const isTouchscreen = Boolean('ontouchstart' in window || navigator.msMaxTouchPoints);
   const loop = slidesPerView * 2 < slidesAmount;

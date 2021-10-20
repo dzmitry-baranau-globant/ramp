@@ -51,7 +51,7 @@ function App() {
       <div className={styles.recommendationsWrapper}>
         <div className={styles.subNavigation}>
           {subNavigationsMenu.map((text, index) => (
-            <>
+            <React.Fragment key={text}>
               <Typography
                 className={index === 0 ? styles.subNavigation__selected : null}
                 fontWeight={300}
@@ -60,15 +60,15 @@ function App() {
                 {text}
               </Typography>
               {index !== subNavigationsMenu.length - 1 ? <span>|</span> : null}
-            </>
+            </React.Fragment>
           ))}
         </div>
         {recommendationsData.map((recommendationRow) => (
           <div className={styles.recommendationRowWrapper} key={recommendationRow.title.text}>
             <RecommendationsRow
               {...recommendationRow}
-              slideHeight={isExtendedGrid ? recommendationRow?.slideHeight : 200}
-              slideWidth={isExtendedGrid ? recommendationRow?.slideWidth : 180}
+              slideHeight={isExtendedGrid ? recommendationRow?.slideHeight : 220}
+              slideWidth={isExtendedGrid ? recommendationRow?.slideWidth : 200}
             />
           </div>
         ))}

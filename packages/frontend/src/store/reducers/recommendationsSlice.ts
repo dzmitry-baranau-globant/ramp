@@ -32,7 +32,6 @@ export const recommendationsSlice = createSlice({
       state,
       { payload: { date } }: { payload: { date: string } },
     ) => {
-      console.log({ date });
       state.selectedCachedDate = date;
     },
   },

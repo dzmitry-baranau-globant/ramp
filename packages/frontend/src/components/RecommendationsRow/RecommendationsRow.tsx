@@ -12,7 +12,9 @@ import styles from './RecommendationsRow.module.scss';
 // Import css files
 import 'keen-slider/keen-slider.min.css';
 
-export interface IRecommendationsRowProps extends IRecommendationsSection {}
+export interface IRecommendationsRowProps extends IRecommendationsSection {
+  slideSpace?: number;
+}
 
 const StyledArowButton = styled.button`
   display: flex;
@@ -46,10 +48,12 @@ const StyledArowButton = styled.button`
 function RecommendationsRow(props: IRecommendationsRowProps) {
   const {
     items, title, slideWidth, slideHeight,
+    slideSpace = 12,
   } = props;
   const { slidesPerView, loop, slidesWidth } = useKeenSliderProps({
     slideWidth,
     slidesAmount: items.length,
+    slideSpace,
   });
   const [relativeSlide, setRelativeSlide] = useState(0);
   const handleChangeRelativeSlide = (relativeSlideIndex: number) => {
@@ -64,6 +68,7 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
     mode: 'snap',
     duration: 600,
     slideChanged: (slider) => handleChangeRelativeSlide(slider.details().relativeSlide),
+    spacing: slideSpace,
   });
 
   const isNextDisabled = !loop && relativeSlide + slidesPerView >= items.length;
@@ -79,18 +84,9 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
     slider.moveToSlideRelative(nextSlide, true);
   };
 
-  if (Number.isNaN(slidesPerView)) {
-    return null;
-  }
-
   return (
     <div className={styles.root}>
-      <Typography
-        marginBottom="8px"
-        className={styles.title}
-        variant="h4"
-        fontWeight={700}
-      >
+      <Typography marginBottom="8px" className={styles.title} variant="h4" fontWeight={700}>
         {title.text}
       </Typography>
       <div className={styles.sliderWrapper}>
@@ -98,7 +94,11 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
           {items.map((movie, index) => (
             <div
               className={`keen-slider__slide number-slide${index}`}
-              style={{ minWidth: slidesWidth || slideWidth, height: slideHeight }}
+              style={{
+                minWidth: slidesWidth,
+                height: slideHeight,
+                transform: `translate3d(${12 * index}px, 0px, 0px)`,
+              }}
               key={movie.imageHref + movie.title + index}
             >
               {Number.isNaN(slidesPerView) ? null : (
@@ -107,7 +107,6 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
                   index={index}
                   {...movie}
                   slideHeight={slideHeight}
-                  isLast={index + 1 === items.length}
                 />
               )}
             </div>
