@@ -101,14 +101,12 @@ function RecommendationsRow(props: IRecommendationsRowProps) {
               }}
               key={movie.imageHref + movie.title + index}
             >
-              {Number.isNaN(slidesPerView) ? null : (
-                <MovieSlide
-                  key={movie.imageHref}
-                  index={index}
-                  {...movie}
-                  slideHeight={slideHeight}
-                />
-              )}
+              <MovieSlide
+                key={movie.imageHref}
+                index={index}
+                {...movie}
+                slideHeight={slideHeight}
+              />
             </div>
           ))}
         </div>
