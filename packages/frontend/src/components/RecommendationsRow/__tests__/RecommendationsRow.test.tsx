@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from '../App';
+import RecommendationsRow from '../RecommendationsRow';
 import TestWrapper from '../../../test-utils';
 
-describe('<App />', () => {
+describe('<RecommendationsRow />', () => {
   it('renders correctly', () => {
     const wrapper = render(
       <TestWrapper>
-        <App />
+        {/* <RecommendationsRow /> */}
       </TestWrapper>,
     );
     expect(wrapper).toMatchSnapshot();

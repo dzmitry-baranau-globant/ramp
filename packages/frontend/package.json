@@ -77,5 +77,11 @@
     "sass": "^1.42.1",
     "ts-jest": "^27.0.7",
     "tsconfig-paths-jest": "^0.0.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "@components/(.*)": "<rootDir>/src/components/$1",
+      "@store/(.*)": ["<rootDir>/src/store/$1"]
+    }
   }
 }
